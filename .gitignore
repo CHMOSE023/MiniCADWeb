@@ -9,3 +9,4 @@ dist-lib/
 # public/minicad.js
 # public/minicad.wasm
 # public/minicad.data
+.npmrc

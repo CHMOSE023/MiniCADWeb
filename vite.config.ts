@@ -51,18 +51,24 @@ const WASM_FILES = ['minicad.js', 'minicad.wasm', 'minicad.data'];
 const copyWasmPlugin = {
   name: 'copy-wasm',
   closeBundle() {
-    const src = path.resolve(__dirname, 'public');
-    const dst = path.resolve(__dirname, 'dist-lib/wasm');
-    fs.mkdirSync(dst, { recursive: true });
+    // Copy WASM files
+    const wasmSrc = path.resolve(__dirname, 'public');
+    const wasmDst = path.resolve(__dirname, 'dist-lib/wasm');
+    fs.mkdirSync(wasmDst, { recursive: true });
     for (const f of WASM_FILES) {
-      const srcFile = path.join(src, f);
+      const srcFile = path.join(wasmSrc, f);
       if (fs.existsSync(srcFile)) {
-        fs.copyFileSync(srcFile, path.join(dst, f));
+        fs.copyFileSync(srcFile, path.join(wasmDst, f));
         console.log(`  copied → dist-lib/wasm/${f}`);
       } else {
         console.warn(`  WARN: ${f} not found in public/ — run build_wasm.bat first`);
       }
     }
+    // Copy icons
+    const iconSrc = path.resolve(__dirname, 'assets/icons');
+    const iconDst = path.resolve(__dirname, 'dist-lib/icons');
+    copyDirSync(iconSrc, iconDst);
+    console.log(`  copied → dist-lib/icons/`);
   },
 };
 

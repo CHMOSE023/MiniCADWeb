@@ -22,12 +22,29 @@
 npm install minicad-web
 ```
 
-包内附带三个 WASM 文件，位于 `node_modules/minicad-web/dist-lib/wasm/`，**必须作为静态资源对外提供**，请将它们复制到项目的公共目录：
+包内附带 WASM 文件和图标资源，**必须作为静态资源对外提供**，请将以下目录复制到项目的公共目录：
+
+```bash
+# 复制 WASM 文件 → 放到 public/ 根目录
+cp node_modules/minicad-web/dist-lib/wasm/minicad.js   public/
+cp node_modules/minicad-web/dist-lib/wasm/minicad.wasm public/
+cp node_modules/minicad-web/dist-lib/wasm/minicad.data public/
+
+# 复制图标 → 放到 public/icons/
+cp -r node_modules/minicad-web/dist-lib/icons public/icons
+```
+
+最终 `public/` 目录结构：
 
 ```
-minicad.js
-minicad.wasm
-minicad.data
+public/
+├── minicad.js
+├── minicad.wasm
+├── minicad.data
+└── icons/
+    ├── Line.png
+    ├── Circle.png
+    └── ...
 ```
 
 ---
