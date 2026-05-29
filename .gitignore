@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-lib/
+.pnpm-store/
+*.tgz
+
+# WASM 构建产物 — 从主仓库手动同步或通过 CI 更新
+# 本地开发时取消注释以忽略：
+# public/minicad.js
+# public/minicad.wasm
+# public/minicad.data
