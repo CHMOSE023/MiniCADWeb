@@ -18,11 +18,15 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build library
-        run: npm run build:lib
+        run: pnpm run build:lib
 
       - name: Verify WASM files exist
         run: |
@@ -31,6 +35,6 @@ jobs:
           test -f public/minicad.data || (echo "Missing public/minicad.data" && exit 1)
 
       - name: Publish
-        run: npm publish --access public
+        run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
