@@ -1,5 +1,5 @@
 {
-  "name": "@chmose023/minicad-web",
+  "name": "minicad-web",
   "version": "0.1.0",
   "description": "Lightweight 2D CAD engine for the web — WebAssembly + WebGL2, framework-agnostic Web Component",
   "keywords": ["cad", "webassembly", "webgl", "web-component", "2d"],
