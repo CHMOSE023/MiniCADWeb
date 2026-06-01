@@ -1,6 +1,6 @@
 {
   "name": "minicad-web",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Lightweight 2D CAD engine for the web — WebAssembly + WebGL2, framework-agnostic Web Component",
   "keywords": ["cad", "webassembly", "webgl", "web-component", "2d"],
   "author": "CHMOSE023",
