@@ -89,7 +89,7 @@ export class Toolbar {
     return [
       { id: 'btn-undo', label: '撤销', title: '撤销 (Ctrl+Z)', icon: '/icons/Undo.png', action: () => api.undo() },
       { id: 'btn-redo', label: '重做', title: '重做 (Ctrl+Y)', icon: '/icons/Redo.png', action: () => api.redo() },
-      { id: 'btn-cancel', label: '取消', title: '取消 / Esc', icon: 'class:icon-cancel', action: () => api.keyDown('Escape', 0) },
+      // { id: 'btn-cancel', label: '取消', title: '取消 / Esc', icon: 'class:icon-cancel', action: () => api.keyDown('Escape', 0) },
     ];
   }
 

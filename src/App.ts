@@ -36,6 +36,7 @@ export class App {
     this.renderer = new WebGLRenderer(gl);
     this.atlas = new GlyphAtlas(gl);
     this.bridge = new InputBridge(api, this.canvas, () => this.markDirty());
+    api.setMarkDirty(() => this.markDirty());
     new Toolbar(api, toolbar);
     this.statusBar = new StatusBar(api, status);
     this.cmdLine = new CommandLine(api, canvasWrap);

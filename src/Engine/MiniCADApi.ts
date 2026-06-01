@@ -7,10 +7,15 @@ export class MiniCADApi {
   private m: MiniCADModuleType;
   private _tmpStrBuf = 0;
   private _tmpStrLen = 256;
+  private _markDirty: (() => void) | null = null;
 
   constructor(module: MiniCADModuleType) {
     this.m = module;
     this._tmpStrBuf = module._malloc(this._tmpStrLen);
+  }
+
+  setMarkDirty(callback: () => void) {
+    this._markDirty = callback;
   }
 
   // ── Lifecycle ─────────────────────────────────────────────────────────────
@@ -124,8 +129,8 @@ export class MiniCADApi {
   startMirror() { this.m._MiniCAD_StartMirror(); }
   startRotate() { this.m._MiniCAD_StartRotate(); }
   deleteSelected() { this.m._MiniCAD_DeleteSelected(); }
-  undo() { this.m._MiniCAD_Undo(); }
-  redo() { this.m._MiniCAD_Redo(); }
+  undo() { this.m._MiniCAD_Undo(); this._markDirty?.(); }
+  redo() { this.m._MiniCAD_Redo(); this._markDirty?.(); }
 
   isSnapEnabled(): boolean { return this.m._MiniCAD_IsSnapEnabled() !== 0; }
   isOrthoEnabled(): boolean { return this.m._MiniCAD_IsOrthoEnabled() !== 0; }
